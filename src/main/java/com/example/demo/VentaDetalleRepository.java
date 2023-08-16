@@ -3,7 +3,7 @@ package com.example.demo;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@RepositoryRestResource(collectionResourceRel = "detalle_ventas", path = "detalle_ventas")
+@RepositoryRestResource(collectionResourceRel = "VentaDetalles", path = "VentaDetalles")
 public interface VentaDetalleRepository extends CrudRepository<VentaDetalle, Long>{
     
 }

@@ -133,7 +133,7 @@ class VentaList extends React.Component {
 			<Venta key={venta._links.self.href} venta={venta} />
 		);
 		return (
-			<table  class="table-primary">
+			<table class="table table-bordered border-primary">
 				<tbody>
 					<tr>
 						<th>Total</th>
@@ -195,7 +195,7 @@ class Venta extends React.Component {
 		const id = this.props.venta._links.self.href.split("/").slice(-1);
 		return (
 			<tr>
-				<td>{this.props.venta.total}</td>
+				<td>S/ {this.props.venta.total}</td>
 				<td>
 					<Link to={`/ver-venta/${id}`}>Ver Venta</Link>
 				</td>

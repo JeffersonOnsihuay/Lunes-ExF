@@ -1,4 +1,4 @@
-@server = https://redesigned-space-giggle-4gw7x96w53qwwx-8080.app.github.dev
+@server = https://cuddly-barnacle-5wvp7wx5p9v2pp66-8080.app.github.dev/
 @instumentos = {{server}}/api/instrumentos
 @musicos = {{server}}/api/musicos
 ###
@@ -21,3 +21,5 @@ Content-Type: application/json
 GET {{server}}/api/integrantes/1/instrumento
 ###
 GET {{server}}/api/bandas/1/formacion
+###
+GET {{server}}/api/ventas
