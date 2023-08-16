@@ -1,0 +1,23 @@
+@server = https://redesigned-space-giggle-4gw7x96w53qwwx-8080.app.github.dev
+@instumentos = {{server}}/api/instrumentos
+@musicos = {{server}}/api/musicos
+###
+GET {{instumentos}}
+###
+POST {{instumentos}}
+Content-Type: application/json
+
+{
+    "nombre": "Quena",
+    "categoria": "Viento",
+    "descripcion": "Tubo de madera con orificios"
+}
+###
+POST {{musicos}}
+Content-Type: application/json
+
+{"nombre": "Otro Músico"}
+###
+GET {{server}}/api/integrantes/1/instrumento
+###
+GET {{server}}/api/bandas/1/formacion
