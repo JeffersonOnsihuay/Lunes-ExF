@@ -55,7 +55,7 @@ const PageVerBanda = () => {
                     {integrantes.map(integrante => {
 
                         return (
-                            <tr key={integrante.ID}>
+                            <tr key={integrante.id}>
                                 <td>{integrante.MUSICO}</td>
                                 <td>{integrante.INSTRUMENTO}</td>
                             </tr>

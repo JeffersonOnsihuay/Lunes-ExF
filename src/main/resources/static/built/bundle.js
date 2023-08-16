@@ -40848,6 +40848,7 @@ var PageEditarInstrumento = __webpack_require__(/*! ./pages/editar-instrumento *
 var PageVerBanda = __webpack_require__(/*! ./pages/ver-banda */ "./src/main/js/pages/ver-banda.js");
 var PageNuevoIntegrante = __webpack_require__(/*! ./pages/nuevo-integrante */ "./src/main/js/pages/nuevo-integrante.js");
 var PageVerVenta = __webpack_require__(/*! ./pages/ver-venta */ "./src/main/js/pages/ver-venta.js");
+var PageNuevoDetalle = __webpack_require__(/*! ./pages/nuevo-detalle-de-venta */ "./src/main/js/pages/nuevo-detalle-de-venta.js");
 var router = createBrowserRouter([{
   path: '/',
   element: /*#__PURE__*/React.createElement(PageHome, null)
@@ -40875,6 +40876,9 @@ var router = createBrowserRouter([{
 }, {
   path: '/ver-venta/:id',
   element: /*#__PURE__*/React.createElement(PageVerVenta, null)
+}, {
+  path: '/ver-venta/:id/nuevo-detalle-de-venta',
+  element: /*#__PURE__*/React.createElement(PageNuevoDetalle, null)
 }]);
 ReactDOM.render( /*#__PURE__*/React.createElement(React.StrictMode, null, /*#__PURE__*/React.createElement(RouterProvider, {
   router: router
@@ -41357,6 +41361,101 @@ module.exports = PageHome;
 
 /***/ }),
 
+/***/ "./src/main/js/pages/nuevo-detalle-de-venta.js":
+/*!*****************************************************!*\
+  !*** ./src/main/js/pages/nuevo-detalle-de-venta.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// const React = require('react');
+// const {useState, useEffect} = require('react');
+// const { Link,useParams } = require('react-router-dom');
+// const client = require('../client');
+
+// const NuevoIntegrantePage = () => {
+
+//     let { id } = useParams();
+//     const [musicos, setMusicos] = useState([])
+//     const [instrumentos, setInstrumentos] = useState([])
+//     const [idMusico, setIdMusico] = useState('')
+//     const [idInstrumento, setIdInstrumento] = useState('')
+
+//     const handleSubmit = (evento)=>{
+//         evento.preventDefault();
+//         client({
+//             method: 'POST',
+//             path: '/api/integrantes',
+//             entity: {
+//                 banda: 'http://localhost:8080/api/bandas/'+id,
+//                 musico: 'http://localhost:8080/api/musicos/'+idMusico,
+//                 instrumento: 'http://localhost:8080/api/instrumentos/'+idInstrumento
+//             },
+//             headers: {'Content-Type': 'application/json'}
+//         }).done(()=>{
+//            window.location = '/';
+//         })
+//     }
+
+//     useEffect(() => {
+//         client({
+//             method: 'GET',
+//             path: '/api/musicos'
+//         }).done(response=>{
+//             let musicos2 = [];
+//             response.entity._embedded.musicos.map(musico => {
+//                 musicos2.push({value: musico._links.self.href.split('/').slice(-1), label: musico.nombre})
+//             })
+//             setMusicos(musicos2)
+//         })
+//         client({
+//             method: 'GET',
+//             path: '/api/instrumentos'
+//         }).done(response=>{
+//             let instrumentos2 = [];
+//             response.entity._embedded.instrumentos.map(instrumento => {
+//                 instrumentos2.push({value: instrumento._links.self.href.split('/').slice(-1), label: instrumento.nombre})
+//             })
+//             setInstrumentos(instrumentos2)
+//         })
+
+//     },[])
+
+//     return (
+//         <>
+//             <h1>Nuevo Integrante</h1>
+//             <form onSubmit={handleSubmit}>
+
+//                 <label htmlFor='musico'>Musico</label>
+//                 <select name="musico" id="musico" onChange={(e)=>{setIdMusico(e.target.value)}}>
+//                     {musicos.map(musico => {	
+//                         return (
+//                             <option key={musico.value} value={musico.value}>{musico.label}</option>
+//                         )
+//                     })}
+//                 </select>
+
+//                 <label>Instrumento</label>
+//                 <select name="instrumento" id="instrumento" onChange={(e)=>{setIdInstrumento(e.target.value)}}>
+//                     {instrumentos.map(instrumento => {	
+//                         return (
+//                             <option key={instrumento.value} value={instrumento.value}>{instrumento.label}</option>
+//                         )
+//                     })}
+//                 </select>
+
+//                 <input type="submit" value="Nuevo Integrante" />
+
+//             </form>
+//             <Link to="/">Volver</Link>
+//         </>
+//     )
+// }
+
+// module.exports = NuevoIntegrantePage;
+
+/***/ }),
+
 /***/ "./src/main/js/pages/nuevo-instrumento.js":
 /*!************************************************!*\
   !*** ./src/main/js/pages/nuevo-instrumento.js ***!
@@ -41680,7 +41779,7 @@ var PageVerBanda = function PageVerBanda() {
     border: "1"
   }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Musico"), /*#__PURE__*/React.createElement("th", null, "Instrumento"))), /*#__PURE__*/React.createElement("tbody", null, integrantes.map(function (integrante) {
     return /*#__PURE__*/React.createElement("tr", {
-      key: integrante.ID
+      key: integrante.id
     }, /*#__PURE__*/React.createElement("td", null, integrante.MUSICO), /*#__PURE__*/React.createElement("td", null, integrante.INSTRUMENTO));
   }))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
     to: "/ver-banda/".concat(id, "/nuevo-integrante")
@@ -41758,24 +41857,39 @@ var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react
 var _require2 = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
   useState = _require2.useState,
   useEffect = _require2.useEffect;
-var PageVerVenta = function PageVerVenta(props) {
+var PageVerVenta = function PageVerVenta() {
   var _useParams = useParams(),
     id = _useParams.id;
   var _useState = useState({}),
     _useState2 = _slicedToArray(_useState, 2),
     venta = _useState2[0],
     setVenta = _useState2[1];
-  // const [integrantes, setIntegrantes] = useState([]);
-
+  var _useState3 = useState([]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ventadetalle = _useState4[0],
+    setVentaDetalle = _useState4[1];
   useEffect(function () {
+    url_venta = '/api/ventas/' + id;
     client({
       method: 'GET',
-      path: '/api/ventas/' + id
+      path: url_venta
     }).done(function (response) {
       setVenta(response.entity);
     });
+    client({
+      method: 'GET',
+      path: url_venta + '/formacion'
+    }).done(function (response) {
+      return setVentaDetalle(response.entity);
+    });
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Total"), /*#__PURE__*/React.createElement("td", null, venta.total)))), /*#__PURE__*/React.createElement(Link, {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Total"), /*#__PURE__*/React.createElement("td", null, venta.total)))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Detalles de Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "ID"), /*#__PURE__*/React.createElement("th", null, "Producto"), /*#__PURE__*/React.createElement("th", null, "Precio Unitario"), /*#__PURE__*/React.createElement("th", null, "Cantidad"), /*#__PURE__*/React.createElement("th", null, "Total Venta"))), /*#__PURE__*/React.createElement("tbody", null, ventadetalle.map(function (ventadetalle) {
+    return /*#__PURE__*/React.createElement("tr", {
+      key: ventadetalle.ID
+    }, /*#__PURE__*/React.createElement("td", null, ventadetalle.ID), /*#__PURE__*/React.createElement("td", null, ventadetalle.PRODUCTO), /*#__PURE__*/React.createElement("td", null, ventadetalle.PRECIO_UNITARIO), /*#__PURE__*/React.createElement("td", null, ventadetalle.CANTIDAD), /*#__PURE__*/React.createElement("td", null, ventadetalle.TOTAL_VENTA));
+  }))), /*#__PURE__*/React.createElement(Link, {
+    to: "/ver-venta/".concat(id, "/nuevo-detalle-de-venta")
+  }, "Agregar Detalle de Venta"), " |", /*#__PURE__*/React.createElement(Link, {
     to: "/"
   }, "Volver"));
 };

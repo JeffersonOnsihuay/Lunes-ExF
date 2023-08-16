@@ -5,20 +5,26 @@ const {useState, useEffect} = require('react');
 
 
 
-const PageVerVenta = (props) => {
+const PageVerVenta = () => {
 
     let { id } = useParams();
     const [venta, setVenta] = useState({});
-    // const [integrantes, setIntegrantes] = useState([]);
+    const [ventadetalle, setVentaDetalle] = useState([]);
 
 
     useEffect(() => {
+        url_venta = '/api/ventas/' + id
         client({
             method: 'GET',
-            path: '/api/ventas/' + id
+            path: url_venta
         }).done(response => {
             setVenta(response.entity);
         });
+
+        client({
+            method:'GET',
+            path: url_venta + '/formacion'
+        }).done(response => setVentaDetalle(response.entity))
 
 
     }, []);
@@ -35,7 +41,35 @@ const PageVerVenta = (props) => {
                     </tr>
                 </tbody>
             </table>
+            
+            <hr></hr>
 
+            <h2>Detalles de Venta</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Precio Unitario</th>
+                        <th>Cantidad</th>
+                        <th>Total Venta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {ventadetalle.map(ventadetalle => {
+                        return (
+                            <tr key={ventadetalle.ID}>
+                                <td>{ventadetalle.ID}</td>
+                                <td>{ventadetalle.PRODUCTO}</td>
+                                <td>{ventadetalle.PRECIO_UNITARIO}</td>
+                                <td>{ventadetalle.CANTIDAD}</td>
+                                <td>{ventadetalle.TOTAL_VENTA}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
+            <Link to={`/ver-venta/${id}/nuevo-detalle-de-venta`}>Agregar Detalle de Venta</Link> |  
             <Link to="/">Volver</Link>
         </>
     )
