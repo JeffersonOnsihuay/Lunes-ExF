@@ -41172,7 +41172,45 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Demo App!"), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("div", {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Demo App!"), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "100%",
+          "display": "flex"
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 4)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Instrumentos",
+        emoji: "\uD83C\uDFB8"
+      }), /*#__PURE__*/React.createElement(InstrumentoList, {
+        instrumentos: this.state.instrumentos
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nuevo-instrumento"
+      }, "Nuevo Instrumento")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 4)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Musicos",
+        emoji: "\uD83C\uDFB5"
+      }), /*#__PURE__*/React.createElement(MusicoList, {
+        musicos: this.state.musicos
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nuevo-musico"
+      }, "Nuevo Musico")), /*#__PURE__*/React.createElement("div", {
+        style: {
+          "width": "calc(100% / 4)"
+        }
+      }, /*#__PURE__*/React.createElement(Titulo, {
+        entidad: "Bandas",
+        emoji: "\uD83D\uDC69\uD83C\uDFFC\u200D\uD83C\uDFA4"
+      }), /*#__PURE__*/React.createElement(BandaList, {
+        bandas: this.state.bandas
+      }), /*#__PURE__*/React.createElement(Link, {
+        to: "/nueva-banda"
+      }, "Nueva Banda"))), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("div", {
         style: {
           "width": "calc(100% / 4)"
         }
@@ -41366,93 +41404,96 @@ module.exports = PageHome;
   !*** ./src/main/js/pages/nuevo-detalle-de-venta.js ***!
   \*****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// const React = require('react');
-// const {useState, useEffect} = require('react');
-// const { Link,useParams } = require('react-router-dom');
-// const client = require('../client');
-
-// const NuevoIntegrantePage = () => {
-
-//     let { id } = useParams();
-//     const [musicos, setMusicos] = useState([])
-//     const [instrumentos, setInstrumentos] = useState([])
-//     const [idMusico, setIdMusico] = useState('')
-//     const [idInstrumento, setIdInstrumento] = useState('')
-
-//     const handleSubmit = (evento)=>{
-//         evento.preventDefault();
-//         client({
-//             method: 'POST',
-//             path: '/api/integrantes',
-//             entity: {
-//                 banda: 'http://localhost:8080/api/bandas/'+id,
-//                 musico: 'http://localhost:8080/api/musicos/'+idMusico,
-//                 instrumento: 'http://localhost:8080/api/instrumentos/'+idInstrumento
-//             },
-//             headers: {'Content-Type': 'application/json'}
-//         }).done(()=>{
-//            window.location = '/';
-//         })
-//     }
-
-//     useEffect(() => {
-//         client({
-//             method: 'GET',
-//             path: '/api/musicos'
-//         }).done(response=>{
-//             let musicos2 = [];
-//             response.entity._embedded.musicos.map(musico => {
-//                 musicos2.push({value: musico._links.self.href.split('/').slice(-1), label: musico.nombre})
-//             })
-//             setMusicos(musicos2)
-//         })
-//         client({
-//             method: 'GET',
-//             path: '/api/instrumentos'
-//         }).done(response=>{
-//             let instrumentos2 = [];
-//             response.entity._embedded.instrumentos.map(instrumento => {
-//                 instrumentos2.push({value: instrumento._links.self.href.split('/').slice(-1), label: instrumento.nombre})
-//             })
-//             setInstrumentos(instrumentos2)
-//         })
-
-//     },[])
-
-//     return (
-//         <>
-//             <h1>Nuevo Integrante</h1>
-//             <form onSubmit={handleSubmit}>
-
-//                 <label htmlFor='musico'>Musico</label>
-//                 <select name="musico" id="musico" onChange={(e)=>{setIdMusico(e.target.value)}}>
-//                     {musicos.map(musico => {	
-//                         return (
-//                             <option key={musico.value} value={musico.value}>{musico.label}</option>
-//                         )
-//                     })}
-//                 </select>
-
-//                 <label>Instrumento</label>
-//                 <select name="instrumento" id="instrumento" onChange={(e)=>{setIdInstrumento(e.target.value)}}>
-//                     {instrumentos.map(instrumento => {	
-//                         return (
-//                             <option key={instrumento.value} value={instrumento.value}>{instrumento.label}</option>
-//                         )
-//                     })}
-//                 </select>
-
-//                 <input type="submit" value="Nuevo Integrante" />
-
-//             </form>
-//             <Link to="/">Volver</Link>
-//         </>
-//     )
-// }
-
-// module.exports = NuevoIntegrantePage;
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _require = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+  useState = _require.useState,
+  useEffect = _require.useEffect;
+var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require2.Link,
+  useParams = _require2.useParams;
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var NuevoDetalleDeVenta = function NuevoDetalleDeVenta() {
+  var _useParams = useParams(),
+    id = _useParams.id;
+  var _useState = useState([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    productos = _useState2[0],
+    setProductos = _useState2[1]; // Agregado: Define el estado de productos
+  var _useState3 = useState(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    idproducto = _useState4[0],
+    setIdProducto = _useState4[1];
+  var _useState5 = useState(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    cantidad = _useState6[0],
+    setCantidad = _useState6[1];
+  var handleSubmit = function handleSubmit(event) {
+    event.preventDefault();
+    client({
+      method: 'POST',
+      path: '/api/VentaDetalles',
+      entity: {
+        idVenta: 'http://localhost:8080/api/ventas/' + id,
+        idProducto: 'http://localhost:8080/api/productos/' + idproducto,
+        cantidad: cantidad
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).done(function () {
+      window.location = '/';
+    });
+  };
+  useEffect(function () {
+    client({
+      method: 'GET',
+      path: '/api/productos'
+    }).done(function (response) {
+      var productos2 = [];
+      response.entity._embedded.productos.map(function (producto) {
+        productos2.push({
+          value: producto._links.self.href.split('/').slice(-1),
+          label: producto.nombre
+        });
+      });
+      setProductos(productos2);
+    });
+  }, []);
+  var handleCantidadChange = function handleCantidadChange(event) {
+    setCantidad(event.target.value);
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Agregar Detalle de Venta"), /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("label", null, "Producto"), /*#__PURE__*/React.createElement("select", {
+    name: "producto",
+    id: "producto",
+    onChange: function onChange(e) {
+      setIdProducto(e.target.value);
+    }
+  }, productos.map(function (producto) {
+    return /*#__PURE__*/React.createElement("option", {
+      key: producto.value,
+      value: producto.value
+    }, producto.label);
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Cantidad:", /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: cantidad,
+    onChange: handleCantidadChange
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", {
+    type: "submit"
+  }, "Agregar Detalle de Venta")), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Link, {
+    to: "/ver-venta/".concat(id)
+  }, "Volver a Detalles de Venta"));
+};
+module.exports = NuevoDetalleDeVenta;
 
 /***/ }),
 

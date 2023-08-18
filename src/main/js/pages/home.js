@@ -25,7 +25,7 @@ class PageHome extends React.Component {
 		return (
 			<>
 				<h1>Demo App!</h1>
-{/* 
+
 				<div style={{"width": "100%", "display": "flex"}}>
 					<div style={{"width": "calc(100% / 4)"}}>
 						<Titulo entidad="Instrumentos" emoji="🎸" />
@@ -42,7 +42,7 @@ class PageHome extends React.Component {
 						<BandaList bandas={this.state.bandas} />
 						<Link to="/nueva-banda">Nueva Banda</Link>
 					</div>
-				</div> */}
+				</div>
 				<center>
 					<div style={{"width": "calc(100% / 4)"}}>
 						<Titulo entidad="Ventas" emoji="💲" />
