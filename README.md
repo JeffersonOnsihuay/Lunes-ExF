@@ -1,2 +1,6 @@
 # Evaluacion Final - Negocio [Productos - Ventas - Detalle Ventas]
-_
+
+Tablas.-
+    Productos
+    Ventas
+    Detalle Ventas
