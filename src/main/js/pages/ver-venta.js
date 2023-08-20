@@ -51,30 +51,30 @@ const PageVerVenta = () => {
             <table>
                 <thead>
                     <tr>
-                        {/* <th>ID</th> */}
+                        <th>ID</th>
                         <th>Producto</th>
-                        {/* <th>Precio Unitario</th> */}
+                        <th>Precio Unitario</th>
                         <th>Cantidad</th>
-                        {/* <th>Total Venta</th> */}
+                        <th>Total Venta</th>
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">
                     {ventadetalle.map(ventadetalle => {
                         return (
                             <tr key={ventadetalle.ID}>
-                                {/* <td>{ventadetalle.ID}</td> */}
+                                <td>{ventadetalle.ID}</td>
                                 <td>{ventadetalle.PRODUCTO}</td>
-                                {/* <td>{ventadetalle.PRECIO_UNITARIO}</td> */}
+                                <td>{ventadetalle.PRECIO_UNITARIO}</td>
                                 <td>{ventadetalle.CANTIDAD}</td>
-                                {/* <td>{ventadetalle.TOTAL_VENTA}</td> */}
+                                <td>{ventadetalle.TOTAL_VENTA}</td>
                             </tr>
                         )
                     })}
                 </tbody>
             </table>
             <hr />
-            <Link to={`/ver-venta/${id}/nuevo-detalle-de-venta`}>Agregar Detalle de Venta</Link> |  
-            <Link to="/">Volver</Link>
+            <Link to={`/ver-venta/${id}/nuevo-detalle-de-venta`}>| Agregar Detalle de Venta |</Link>  
+            <Link to="/">| Volver |</Link>
         </center>
         </>
     )
