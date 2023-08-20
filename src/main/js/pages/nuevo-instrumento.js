@@ -14,7 +14,9 @@ const PageNuevoInstrumento = () => {
         client({
             method: 'POST',
             path: '/api/instrumentos',
-            entity: { nombre: nombre, categoria: categoria, descripcion: descripcion },
+            entity: { 
+                nombre: nombre, 
+                categoria: categoria, descripcion: descripcion },
             headers: { 'Content-Type': 'application/json' }
         }).done(() => {
             window.location = '/';

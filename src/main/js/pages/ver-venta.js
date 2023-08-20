@@ -32,18 +32,21 @@ const PageVerVenta = () => {
 
     return (
         <>
-            <h1>Venta</h1>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Total</th>
-                        <td>{venta.total}</td>
-                    </tr>
-                </tbody>
-            </table>
-            
+        <hr />
+            <center>
+                <h1>Venta</h1>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Total de la Venta</th>
+                            <td>{venta.total}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </center>
+                
             <hr></hr>
-
+        <center>
             <h2>Detalles de Venta</h2>
             <table>
                 <thead>
@@ -55,7 +58,7 @@ const PageVerVenta = () => {
                         <th>Total Venta</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="table-group-divider">
                     {ventadetalle.map(ventadetalle => {
                         return (
                             <tr key={ventadetalle.ID}>
@@ -71,6 +74,7 @@ const PageVerVenta = () => {
             </table>
             <Link to={`/ver-venta/${id}/nuevo-detalle-de-venta`}>Agregar Detalle de Venta</Link> |  
             <Link to="/">Volver</Link>
+        </center>
         </>
     )
 }

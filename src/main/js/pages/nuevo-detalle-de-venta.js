@@ -6,9 +6,9 @@ const client = require('../client');
 const NuevoDetalleDeVenta = () => {
 
     let { id } = useParams();
-    const [productos, setProductos] = useState([]); // Agregado: Define el estado de productos
-    const [idproducto, setIdProducto] = useState('');
-    const [cantidad, setCantidad] = useState('');
+    const [productos, setProductos] = useState([])
+    const [idProducto, setIdProducto] = useState('')
+    const [cantidad, setCantidad] = useState('')
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -16,14 +16,14 @@ const NuevoDetalleDeVenta = () => {
             method: 'POST',
             path: '/api/VentaDetalles',
             entity: {
-                idVenta: 'http://localhost:8080/api/ventas/' + id,
-                idProducto: 'http://localhost:8080/api/productos/' + idproducto,
+                venta: 'http://localhost:8080/api/ventas/' + id,
+                producto: 'http://localhost:8080/api/productos/' + idProducto,
                 cantidad: cantidad
             },
             headers: { 'Content-Type': 'application/json' }
         }).done(() => {
             window.location = '/';
-        });
+        })
     };
 
     useEffect(() => {
@@ -45,9 +45,11 @@ const NuevoDetalleDeVenta = () => {
 
     return (
         <>
-            <h1>Agregar Detalle de Venta</h1>
+        <hr />
+        <center><h1>Agregar Detalle de Venta</h1></center>
+        <hr />
             <form onSubmit={handleSubmit}>
-                <label>Producto</label>
+                <label>Producto:</label>
                 <select name="producto" id="producto" onChange={(e) => { setIdProducto(e.target.value) }}>
                     {productos.map(producto => {
                         return (
@@ -58,15 +60,13 @@ const NuevoDetalleDeVenta = () => {
 
                 <br />
 
-                <label>
-                    Cantidad:
-                    <input type="text" value={cantidad} onChange={handleCantidadChange} />
-                </label>
+                <label>Cantidad:</label>
+                <input type="text" value={cantidad} onChange={handleCantidadChange} />
                 <br />
                 <button type="submit">Agregar Detalle de Venta</button>
+                <br />
+                <Link to={`/ver-venta/${id}`}>Volver a Detalles de Venta</Link>
             </form>
-            <br />
-            <Link to={`/ver-venta/${id}`}>Volver a Detalles de Venta</Link>
         </>
     );
 };

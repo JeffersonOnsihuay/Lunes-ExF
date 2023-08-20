@@ -1,3 +1,82 @@
 body{
-    background-color: rgb(231, 201, 172);
+    background-color: rgb(7,33,69);
+}
+h1, h2, h3, h4, h5, h6 {
+    color: rgb(239, 246, 247);
+  }
+p {
+    color: rgb(239, 246, 247);
+  }
+span {
+    color: rgb(239, 246, 247);
+  }
+table {
+    color: rgb(239, 246, 247);
+  }
+th, td {
+    border: 1px solid rgb(239, 246, 247);
+    padding: 8px;
+  }
+label{
+    color: rgb(239, 246, 247);
+  }
+/* Estilos para el formulario
+form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+} */
+form {
+  padding-left: 40%;
+  padding-right: 40%;
+}
+/* Estilos para los campos de entrada */
+label {
+  font-weight: bold;
+}
+
+select,
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos para el botón de envío */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.link {
+  color: #ff005575;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+/* Estilos para los enlaces */
+a {
+  color: #3498db; /* Color del enlace */
+  text-decoration: none; /* Quitar subrayado */
+  transition: color 0.3s; /* Transición suave del color */
+}
+
+a:hover {
+  color: #59e73c; /* Cambio de color al pasar el mouse por encima */
 }
