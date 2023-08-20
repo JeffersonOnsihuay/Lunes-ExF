@@ -40840,27 +40840,12 @@ var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react
   createBrowserRouter = _require.createBrowserRouter,
   RouterProvider = _require.RouterProvider;
 var PageHome = __webpack_require__(/*! ./pages/home */ "./src/main/js/pages/home.js");
-// const PageVerInstrumento = require('./pages/ver-instrumento');
-// const PageNuevoInstrumento = require('./pages/nuevo-instrumento');
-// const PageNuevoMusico = require('./pages/nuevo-musico');
-// const PageEditarMusico = require('./pages/editar-musico');
-// const PageEditarInstrumento = require('./pages/editar-instrumento');
-// const PageVerBanda = require('./pages/ver-banda');
-// const PageNuevoIntegrante = require('./pages/nuevo-integrante');
 var PageVerVenta = __webpack_require__(/*! ./pages/ver-venta */ "./src/main/js/pages/ver-venta.js");
 var PageNuevoDetalle = __webpack_require__(/*! ./pages/nuevo-detalle-de-venta */ "./src/main/js/pages/nuevo-detalle-de-venta.js");
 var router = createBrowserRouter([{
   path: '/',
   element: /*#__PURE__*/React.createElement(PageHome, null)
-},
-// {path: '/ver-instrumento/:id', element: <PageVerInstrumento />},
-// {path: '/nuevo-instrumento', element: <PageNuevoInstrumento />},
-// {path: '/nuevo-musico', element: <PageNuevoMusico />},
-// {path: '/editar-musico/:id', element: <PageEditarMusico />},
-// {path: '/editar-instrumento/:id', element: <PageEditarInstrumento />},
-// {path: '/ver-banda/:id', element: <PageVerBanda />},
-// {path: '/ver-banda/:id/nuevo-integrante', element: <PageNuevoIntegrante />},
-{
+}, {
   path: '/ver-venta/:id',
   element: /*#__PURE__*/React.createElement(PageVerVenta, null)
 }, {
@@ -40934,7 +40919,7 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, PageHome);
     _this = _super.call(this, props);
     _this.state = {
-      /*instrumentos: [], musicos: [], bandas: [], */ventas: []
+      ventas: []
     };
     return _this;
   }
@@ -40942,15 +40927,6 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
-      // client({ method: 'GET', path: '/api/instrumentos' }).done(response => {
-      // 	this.setState({ instrumentos: response.entity._embedded.instrumentos });
-      // });
-      // client({ method: 'GET', path: '/api/musicos' }).done(response => {
-      // 	this.setState({ musicos: response.entity._embedded.musicos });
-      // });
-      // client({ method: 'GET', path: '/api/bandas' }).done(response => {
-      // 	this.setState({ bandas: response.entity._embedded.bandas });
-      // });
       client({
         method: 'GET',
         path: '/api/ventas'
@@ -40980,61 +40956,6 @@ var PageHome = /*#__PURE__*/function (_React$Component) {
 var Titulo = function Titulo(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, props.emoji, " - ", props.entidad), /*#__PURE__*/React.createElement("span", null, "Listado completo de ", props.entidad.toLowerCase(), ":"), /*#__PURE__*/React.createElement("hr", null));
 };
-
-// class InstrumentoList extends React.Component {
-// 	render() {
-// 		const instrumentos = this.props.instrumentos.map(instrumento =>
-// 			<Instrumento key={instrumento._links.self.href} instrumento={instrumento} />
-// 		);
-// 		return (
-// 			<table border="1">
-// 				<tbody>
-// 					<tr>
-// 						<th>Nombre</th>
-// 						<th>Acciones</th>
-// 					</tr>
-// 					{instrumentos}
-// 				</tbody>
-// 			</table>
-// 		)
-// 	}
-// }
-// class MusicoList extends React.Component {
-// 	render() {
-// 		const musicos = this.props.musicos.map(musico =>
-// 			<Musico key={musico._links.self.href} musico={musico} />
-// 		);
-// 		return (
-// 			<table border="1">
-// 				<tbody>
-// 					<tr>
-// 						<th>Nombre</th>
-// 						<th>Acciones</th>
-// 					</tr>
-// 					{musicos}
-// 				</tbody>
-// 			</table>
-// 		)
-// 	}
-// }
-// class BandaList extends React.Component {
-// 	render() {
-// 		const bandas = this.props.bandas.map(banda =>
-// 			<Banda key={banda._links.self.href} banda={banda} />
-// 		);
-// 		return (
-// 			<table border="1">
-// 				<tbody>
-// 					<tr>
-// 						<th>Nombre</th>
-// 						<th>Acciones</th>
-// 					</tr>
-// 					{bandas}
-// 				</tbody>
-// 			</table>
-// 		)
-// 	}
-// }
 var VentaList = /*#__PURE__*/function (_React$Component2) {
   _inherits(VentaList, _React$Component2);
   var _super2 = _createSuper(VentaList);
@@ -41057,46 +40978,7 @@ var VentaList = /*#__PURE__*/function (_React$Component2) {
     }
   }]);
   return VentaList;
-}(React.Component); // class Instrumento extends React.Component {
-// 	render() {
-// 		const id = this.props.instrumento._links.self.href.split("/").slice(-1);
-// 		return (
-// 			<tr>
-// 				<td>{this.props.instrumento.nombre}</td>
-// 				<td>
-// 					<Link to={`/ver-instrumento/${id}`}>Ver</Link> | 
-// 					<Link to={`/editar-instrumento/${id}`}>Editar</Link>
-// 				</td>
-// 			</tr>
-// 		)
-// 	}
-// }
-// class Musico extends React.Component {
-// 	render() {
-// 		const id = this.props.musico._links.self.href.split("/").slice(-1);
-// 		return (
-// 			<tr>
-// 				<td>{this.props.musico.nombre}</td>
-// 				<td>
-// 					<Link to={`/editar-musico/${id}`}>Editar</Link>
-// 				</td>
-// 			</tr>
-// 		)
-// 	}
-// }
-// class Banda extends React.Component {
-// 	render() {
-// 		const id = this.props.banda._links.self.href.split("/").slice(-1);
-// 		return (
-// 			<tr>
-// 				<td>{this.props.banda.nombre}</td>
-// 				<td>
-// 					<Link to={`/ver-banda/${id}`}>Ver Banda</Link>
-// 				</td>
-// 			</tr>
-// 		)
-// 	}
-// }
+}(React.Component);
 var Venta = /*#__PURE__*/function (_React$Component3) {
   _inherits(Venta, _React$Component3);
   var _super3 = _createSuper(Venta);
