@@ -62,9 +62,8 @@ const NuevoDetalleDeVenta = () => {
 
                 <label>Cantidad:</label>
                 <input type="text" value={cantidad} onChange={handleCantidadChange} />
-                <br />
-                <button type="submit">Agregar Detalle de Venta</button>
-                <br />
+                <button className="button button-primary" type="submit">Agregar Detalle de Venta</button>
+                <hr />
                 <Link to={`/ver-venta/${id}`}>Volver a Detalles de Venta</Link>
             </form>
         </>

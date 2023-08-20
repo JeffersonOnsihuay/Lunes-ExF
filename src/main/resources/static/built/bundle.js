@@ -41207,9 +41207,10 @@ var NuevoDetalleDeVenta = function NuevoDetalleDeVenta() {
     type: "text",
     value: cantidad,
     onChange: handleCantidadChange
-  }), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "button button-primary",
     type: "submit"
-  }, "Agregar Detalle de Venta"), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement(Link, {
+  }, "Agregar Detalle de Venta"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
     to: "/ver-venta/".concat(id)
   }, "Volver a Detalles de Venta")));
 };
@@ -41264,13 +41265,13 @@ var PageVerVenta = function PageVerVenta() {
       return setVentaDetalle(response.entity);
     });
   }, []);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Total de la Venta"), /*#__PURE__*/React.createElement("td", null, venta.total))))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h2", null, "Detalles de Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "ID"), /*#__PURE__*/React.createElement("th", null, "Producto"), /*#__PURE__*/React.createElement("th", null, "Precio Unitario"), /*#__PURE__*/React.createElement("th", null, "Cantidad"), /*#__PURE__*/React.createElement("th", null, "Total Venta"))), /*#__PURE__*/React.createElement("tbody", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h1", null, "Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Total de la Venta"), /*#__PURE__*/React.createElement("td", null, venta.total))))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("center", null, /*#__PURE__*/React.createElement("h2", null, "Detalles de Venta"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Producto"), /*#__PURE__*/React.createElement("th", null, "Cantidad"))), /*#__PURE__*/React.createElement("tbody", {
     className: "table-group-divider"
   }, ventadetalle.map(function (ventadetalle) {
     return /*#__PURE__*/React.createElement("tr", {
       key: ventadetalle.ID
-    }, /*#__PURE__*/React.createElement("td", null, ventadetalle.ID), /*#__PURE__*/React.createElement("td", null, ventadetalle.PRODUCTO), /*#__PURE__*/React.createElement("td", null, ventadetalle.PRECIO_UNITARIO), /*#__PURE__*/React.createElement("td", null, ventadetalle.CANTIDAD), /*#__PURE__*/React.createElement("td", null, ventadetalle.TOTAL_VENTA));
-  }))), /*#__PURE__*/React.createElement(Link, {
+    }, /*#__PURE__*/React.createElement("td", null, ventadetalle.PRODUCTO), /*#__PURE__*/React.createElement("td", null, ventadetalle.CANTIDAD));
+  }))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
     to: "/ver-venta/".concat(id, "/nuevo-detalle-de-venta")
   }, "Agregar Detalle de Venta"), " |", /*#__PURE__*/React.createElement(Link, {
     to: "/"

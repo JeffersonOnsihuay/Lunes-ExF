@@ -58,7 +58,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #59e73c;
 }
 
 .link {
@@ -70,6 +70,7 @@ button[type="submit"]:hover {
 .link:hover {
   text-decoration: underline;
 }
+
 /* Estilos para los enlaces */
 a {
   color: #3498db; /* Color del enlace */
@@ -80,3 +81,4 @@ a {
 a:hover {
   color: #59e73c; /* Cambio de color al pasar el mouse por encima */
 }
+
