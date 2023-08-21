@@ -1,9 +1,9 @@
 # Evaluacion Final - Negocio [Productos - Ventas - Detalle Ventas]
 
 Tablas.-
-    Productos
-    Ventas
-    Detalle Ventas
+    .Productos
+    .Ventas
+    .Detalle Ventas
 
 Como usar.-
     Al guardar un producto seleccionar un producto diferente al primero 
